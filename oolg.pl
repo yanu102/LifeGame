@@ -2,12 +2,11 @@ use strict;
 use warnings;
 use Time::HiRes;
 use LifeGame::Field;
-use Const::Fast;
 
-const my $MAX_LOW    = 40;
-const my $MAX_COLUMN = 40;
-const my $WAIT_TIME  = 0.1;
-const my $LOOP_TIME  = 200;
+my $MAX_LOW    = 40;
+my $MAX_COLUMN = 40;
+my $WAIT_TIME  = 0.1;
+my $LOOP_TIME  = 200;
 
 system 'clear';
 
@@ -15,6 +14,7 @@ my $fs = LifeGame::Field->new(
     {
         MAX_LOW    => $MAX_LOW,
         MAX_COLUMN => $MAX_COLUMN,
+        rnd        => $ARGV[0],
     }
 );
 
@@ -25,4 +25,3 @@ foreach my $i ( 1 .. $LOOP_TIME ) {
 }
 
 print "\nend Life Game\n";
-

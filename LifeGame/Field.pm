@@ -4,7 +4,7 @@ use warnings;
 
 sub new {
     my ( $class, $options ) = @_;
-    my $self = {
+    my $self = bless {
         0          => [],
         1          => [],
         MAX_LOW    => $options->{MAX_LOW},
@@ -14,8 +14,8 @@ sub new {
             gun => 'initialize_gun',
         },
         now => 0,
-    };
-    $self = bless $self, $class;
+        rnd => $options->{rnd} // 0,
+    }, $class;
     $self->initialize;
     eval '$self->initialize_' . $self->{init_type};
     return $self;
@@ -26,7 +26,7 @@ sub initialize {
 
     foreach my $i ( 0 .. ( $self->{MAX_LOW} - 1 ) ) {
         foreach my $j ( 0 .. ( $self->{MAX_COLUMN} - 1 ) ) {
-            $self->{0}->[$i][$j] = 0;
+            $self->{0}->[$i][$j] = $self->{rnd} ? int( rand 2 ) : 0;
             $self->{1}->[$i][$j] = 0;
         }
     }
