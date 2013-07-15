@@ -4,10 +4,10 @@ use Time::HiRes;
 use LifeGame::Field;
 use Const::Fast;
 
-const my $MAX_LOW = 40;
+const my $MAX_LOW    = 40;
 const my $MAX_COLUMN = 40;
-const my $WAIT_TIME = 0.1;
-const my $LOOP_TIME = 200;
+const my $WAIT_TIME  = 0.1;
+const my $LOOP_TIME  = 200;
 
 system 'clear';
 
@@ -25,5 +25,4 @@ foreach my $i ( 1 .. $LOOP_TIME ) {
 }
 
 print "\nend Life Game\n";
-
 
