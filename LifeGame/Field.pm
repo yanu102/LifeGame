@@ -17,7 +17,6 @@ sub new {
         rnd => $options->{rnd} // 0,
     }, $class;
     $self->initialize;
-    eval '$self->initialize_' . $self->{init_type};
     return $self;
 }
 
@@ -26,10 +25,11 @@ sub initialize {
 
     foreach my $i ( 0 .. ( $self->{MAX_LOW} - 1 ) ) {
         foreach my $j ( 0 .. ( $self->{MAX_COLUMN} - 1 ) ) {
-            $self->{0}->[$i][$j] = $self->{rnd} ? int( rand 2 ) : 0;
+            $self->{0}->[$i][$j] = $self->{rnd} ? ( ( int rand $self->{rnd}  ) % 2 ) : 0;
             $self->{1}->[$i][$j] = 0;
         }
     }
+    eval '$self->initialize_' . $self->{init_type} if $self->{rnd} == 0;
     return $self;
 }
 
