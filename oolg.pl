@@ -6,7 +6,7 @@ use LifeGame::Field;
 my $MAX_LOW    = 40;
 my $MAX_COLUMN = 40;
 my $WAIT_TIME  = 0.1;
-my $LOOP_TIME  = 200;
+my $LOOP_TIME  = 300;
 
 system 'clear';
 
